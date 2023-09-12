@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+
+        {% if current_user.is_authenticated %}
+        <a type="button" class="btn btn-primary" href="/">Отправка данных</a>
+
+
+        {% if current_user.is_admin %}
+
+        <a class="btn btn-danger" href="/users">Пользователи</a>
+        <a class="btn btn-secondary" href="/stats">Статистика</a>
+
+        {% endif %}
+        <a class="btn btn-info" href="/history">История</a>
+        <a class="navbar-brand" href="">{{ current_user.name }}</a>
+        <a class="btn btn-danger" href="/logout">Выйти</a>
+        {% else %}
+        <p>
+            <a class="btn btn-success" href="/login">Войти</a>
+        </p>
+        {% endif %}
+    </nav>
+</header>
+
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+    </br>
+    <h6><b>Контакты:</b></h6>
+    <div>
+        <b>Телефон</b> - 89809524328</br>
+        <b><a href="https://t.me/flarson4ik">Telegram</a></b>
+    </div>
+</main>
+</body>
+</html>
