@@ -8,9 +8,11 @@ from data.Pupils import Pupils
 import forms.pupil
 import xlsxwriter
 import tempfile
+import os
+
 
 app = Flask(__name__) # Само приложение
-app.config['SECRET_KEY'] = "Машина дикая"
+app.config['SECRET_KEY'] = os.environ["FLASK_SECRET_KEY"]
 login_manager = LoginManager() # Инструмент для входа и выхода пользователей
 login_manager.init_app(app) # Применение инструмента для нашего приложения
 
